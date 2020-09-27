@@ -21,6 +21,7 @@ for (i = 0; i < operations.length; i++) {
     let operationBtn = operations[i];
     operationBtn.addEventListener('click', function(e) {
         operation(e.target.textContent);
+        console.log(e);
     });
 };
 
@@ -67,6 +68,10 @@ function operation(op) {
             MemoryCurrentNumber *= parseFloat(localOperationMemory);
         } else if (MemoryPendingOperation === '/') {
             MemoryCurrentNumber /= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === 'xy') {
+            MemoryCurrentNumber = MemoryCurrentNumber**parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === 'sq') {
+            MemoryCurrentNumber = (localOperationMemory**(1/2));
         } else {
             MemoryCurrentNumber = parseFloat(localOperationMemory);
         };
@@ -100,3 +105,5 @@ function clear(id) {
         MemoryPendingOperation = '';
     }
 };
+/*
+√ */
